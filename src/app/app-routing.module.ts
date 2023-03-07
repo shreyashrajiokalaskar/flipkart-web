@@ -1,10 +1,31 @@
+import { RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonComponentsModule } from '@flipkart/common-components';
+import { ComponentsModule, RoutingModule } from '@flipkart/components';
 
-const routes: Routes = [];
+import { AppComponent } from './app.component';
+import { HttpInterceptorService, SocketService } from '@flipkart/shared-common';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    ComponentsModule,
+    CommonComponentsModule,
+    RouterModule,
+    RoutingModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+    SocketService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppRoutingModule { }
+export class AppModule {}

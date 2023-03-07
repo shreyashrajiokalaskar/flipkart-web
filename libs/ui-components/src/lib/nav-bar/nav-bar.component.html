@@ -1,0 +1,15 @@
+<div>
+  <div class="navbar-container">
+    <div
+      class="navmenu-item"
+      *ngFor="let menu of menuData; let i = index"
+      [id]="i"
+    >
+      <span [id]="i">{{ menu.menuName }} &nbsp;</span>
+      <i [id]="i" class="fa fa-angle-down down-arrow"></i>
+    </div>
+
+    <span>Flights &nbsp;</span>
+    <span>Offer Zone &nbsp;</span>
+  </div>
+</div>

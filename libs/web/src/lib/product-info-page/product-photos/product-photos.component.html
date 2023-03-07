@@ -1,0 +1,36 @@
+<div class="product-photo-wrapper">
+  <div class="image-gallery-wrapper">
+    <div
+      class="image-gallery-item"
+      *ngFor="let photo of photos; let i = index"
+      (mouseenter)="onGallery(i)"
+      (mouseleave)="onGallery(-1)"
+      [ngClass]="{ 'image-gallery-item-highlighted': isReduced && i === index }"
+    >
+      <img
+        [src]="photo"
+        [id]="i"
+        alt=""
+        class="product-image"
+        [ngClass]="{ 'product-image-small': isReduced && i === index }"
+      />
+    </div>
+  </div>
+  <div class="image-display-panel">
+    <div class="image-display">
+      <img class="image-displayed" [src]="displayImage" alt="" />
+    </div>
+
+    <div class="buttons-panel">
+      <div class="add-to-cart-btn">
+        <i class="fa fa-shopping-cart"></i>
+        <button class="button" type="submit">ADD TO CART</button>
+      </div>
+
+      <div class="buy-now-btn">
+        <i class="fa fa-bolt"></i>
+        <button class="button">BUY NOW</button>
+      </div>
+    </div>
+  </div>
+</div>

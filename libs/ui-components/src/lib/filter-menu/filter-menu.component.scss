@@ -1,0 +1,74 @@
+.filter-menu-wrapper{
+    width: 21vw;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4), 0 2px 2px 0 rgba(0, 0, 0, 0.4);
+    background-color: white;
+}
+.filter-header{
+    padding: 16px 16px 12px;
+    font-size: 18px;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+.filter-menu-item-wrapper{
+    border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+.filter-menu{
+    padding: 16px 16px 16px 16px;
+    line-height: 1.4;
+}
+
+.filter-menu-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.filter-menu-subtitle{
+    font-size: 12px;
+}
+
+.filter-menu-list{
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.brand-wrapper{
+    padding: 0 16px 16px 16px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filter-menu-list-item{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    padding: 4px;
+}
+
+.brand-search-box{
+    border-bottom: 2px solid rgb(0, 0, 0, 0.1);
+    display: block;
+    margin:4px 0;
+}
+
+.brand-search{
+    outline: none;
+    width: 16vw;
+    flex: 3;
+}
+
+.search-icon{
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.brand-list{
+    margin-top: 10px;
+}
+
+
+.accordion-panel{
+    display: none;
+}

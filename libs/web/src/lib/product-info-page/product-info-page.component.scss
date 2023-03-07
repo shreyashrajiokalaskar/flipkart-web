@@ -1,0 +1,40 @@
+.product-photo-wrapper {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.product-photo-panel {
+  max-width: 44vw;
+}
+
+.product-info-panel {
+  max-width: 56vw;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.review__section {
+  margin: 1rem;
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+
+.review__form {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.rating_container {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: row;
+}

@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <div class="menu-container">
+    <div class="icon-searchBar">
+      <div class="flipkart-branding">
+        <span class="flipkart-brand-name">Flipkart</span>
+        <span class="flipkart-tagline"
+          >Explore
+          <span style="color: gold"> Plus </span>
+          <i class="fa fa-plus" style="color: gold"></i>
+        </span>
+      </div>
+      <div class="search-container">
+        <input type="text" class="search-box" [(ngModel)]="search" />
+        <i class="fa fa-search"></i>
+      </div>
+    </div>
+
+    <div class="more-button" (click)="searchString()">
+      <span>More&nbsp;</span>
+      <i class="fa fa-angle-down"></i>
+    </div>
+
+    <div class="cart-icon">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      <span class="cart-icon more-button">&nbsp;&nbsp;Cart</span>
+    </div>
+  </div>
+</div>

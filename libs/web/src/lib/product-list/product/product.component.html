@@ -1,0 +1,62 @@
+<div class="product-list-item-wrapper">
+  <div
+    class="product-info-left-panel"
+    [id]="index"
+    routerLinkActive="active"
+    [routerLink]="'./product/' + product.id"
+  >
+    <i [id]="index" class="fa fa-heart heart-icon"></i>
+    <img class="product-image" [src]="product.thumbnail" alt="" />
+  </div>
+
+  <div class="product-info-center-panel">
+    <span class="product-name" [routerLink]="'./product/' + product.id">
+      {{ product.title }}
+    </span>
+
+    <div class="rating-card">
+      <span class="product-rating-card"
+        >{{ product.rating | number : '1.0-1' }}
+        <i class="fa fa-star"></i>
+      </span>
+    </div>
+
+    <div class="specification-list">
+      <ul class="specification-list">
+        <li class="specification-list-item">
+          <i class="fa fa-circle specification-list-bullet"></i>&nbsp;&nbsp;{{
+            product.description
+          }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="product-price-panel">
+    <div class="product-price-panel-header">
+      <span class="product-price"
+        >₹{{
+          getDiscountedPrice(product.discountPercentage, product.price)
+            | number : '1.0-0'
+        }}</span
+      >
+      <img
+        class="fAssured-icon"
+        src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png"
+        alt=""
+      />
+    </div>
+    <div class="product-price-additional-info">
+      <span class="original-price"
+        >₹{{ product.price | number : '1.0-0' }}</span
+      >
+      <span class="discount-amout"
+        >&nbsp; {{ product.discountPercentage | number : '1.0-1' }}% off</span
+      >
+    </div>
+    <div class="exchange-details">
+      <span>Upto <strong>₹10,000</strong> Off on Exchange </span>
+    </div>
+    <span class="emi-details">No Cost EMI</span>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="outer-container d-flex flex-column justify-content-around">
+  <div class="wrapper col-6">
+    <div class="row">
+      <div class="branding col-5 d-flex flex-column justify-content-between">
+        <div class="d-flex flex-column">
+          <span class="title">Login</span>
+          <span>Get access to your Orders, Wishlist and Recommendations </span>
+        </div>
+
+        <img
+          src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png"
+          alt=""
+        />
+      </div>
+      <div class="col-7 d-flex flex-column">
+        <form [formGroup]="loginForm">
+          <div class="mb-3">
+            <div class="margin-bottom-32">
+              <input
+                type="email"
+                class="form-control"
+                formControlName="email"
+                id="exampleInputEmail1"
+                placeholder="Enter Email/Phone number"
+                aria-describedby="emailHelp"
+              />
+            </div>
+          </div>
+          <div class="margin-bottom-32">
+            <div class="mb-3 input-group">
+              <input
+                type="password"
+                class="form-control password-field"
+                id="exampleInputPassword1"
+                formControlName="password"
+                placeholder="Enter Password"
+              /><span class="input-group-text">Forgot?</span>
+            </div>
+          </div>
+        </form>
+        <span class="note"
+          >By continuing, you agree to Flipkart's
+          <a href=""> Terms of Use</a> and <a href="">Privacy Policy</a>.</span
+        >
+        <div class="d-flex flex-column btns">
+          <button
+            (click)="login()"
+            type="submit"
+            class="btn btn-primary submit-btn"
+          >
+            Submit
+          </button>
+          <span class="or-text">OR</span>
+          <button type="button" class="btn btn-light request-otp-btn">
+            Request OTP
+          </button>
+        </div>
+        <a href="" class="sign-up">New to Flipkart? Create an account</a>
+      </div>
+    </div>
+  </div>
+</div>

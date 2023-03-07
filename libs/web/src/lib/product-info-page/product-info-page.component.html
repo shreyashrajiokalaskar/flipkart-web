@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="product-photo-wrapper">
+    <app-product-photos
+      [photos]="productData.images"
+      class="product-photo-panel"
+    ></app-product-photos>
+    <app-product-info
+      [productData]="productData"
+      class="product-info-panel"
+    ></app-product-info>
+  </div>
+  <flipkart-loader [loading]="loadingData"></flipkart-loader>
+  <div class="review__section">
+    <form [formGroup]="reviewForm" class="review__form">
+      <input type="text" placeholder="Enter review" />
+      <div class="rating_container">
+        <input type="radio" />
+        <input type="radio" />
+        <input type="radio" />
+        <input type="radio" />
+        <input type="radio" />
+      </div>
+    </form>
+  </div>
+</div>

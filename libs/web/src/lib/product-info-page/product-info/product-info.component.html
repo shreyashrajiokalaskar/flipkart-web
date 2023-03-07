@@ -1,0 +1,55 @@
+<div class="main-body-header">
+  <span class="ellipsis">Home&nbsp;&nbsp;</span>
+  <i class="fa fa-angle-right"></i>
+  <span class="ellipsis">&nbsp;&nbsp;Camera & Accessories&nbsp;&nbsp;</span>
+  <i class="fa fa-angle-right"></i>
+  <span class="ellipsis">&nbsp;&nbsp;Cameras&nbsp;&nbsp;</span>
+  <i class="fa fa-angle-right"></i>
+  <span routerLink="/home" class="ellipsis back"
+    >&nbsp;&nbsp;DSLR & Mirror&nbsp;&nbsp;</span
+  >
+  <i class="fa fa-angle-right"></i>
+  <span class="ellipsis">&nbsp;&nbsp;{{ productData.title }}</span>
+</div>
+<hr />
+<div class="product-info">
+  <span class="product-name">
+    {{ productData.title }}
+  </span>
+  <div class="rating-card">
+    <div class="product-rating-card">
+      <span>{{ productData.rating }}&nbsp;</span>
+      <i class="fa fa-star"></i>
+    </div>
+
+    <!--<span class="ratings-number">
+      {{ productData.ratingNumber }} Ratings &
+      {{ productData.reviewNumber }} Reviews
+    </span> -->
+    <img
+      class="flipkart-logo"
+      src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png"
+      alt=""
+    />
+  </div>
+  <div class="price-card">
+    <span class="product-price-current">₹&nbsp;{{ productData.price }}</span>
+    <span class="original-price">₹&nbsp;{{ productData.price }}</span>
+    <span class="discount-amount"
+      >₹&nbsp;{{ productData.discountPercentage }} off</span
+    >
+    <span class="info">i</span>
+  </div>
+  <span class="stock-alert">Hury, Only 7 left!</span>
+
+  <br />
+
+  <!-- <div class="offers">
+    <span class="offers-header">Available Offers</span>
+    <div class="offers-list" *ngFor="let offer of productData.offers">
+      <i class="fa fa-tag offers-list-tag-icon"></i>
+      <span>{{ offer }}</span>
+    </div>
+    <span class="view-more-offers">View 4 more offers</span>
+  </div> -->
+</div>

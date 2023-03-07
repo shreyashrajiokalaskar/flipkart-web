@@ -1,0 +1,8 @@
+<div class="footer-wrapper">
+  <div class="footer-column" *ngFor="let footerMenu of footerMenuList">
+    <span class="footer-column-header">{{ footerMenu.listHeader }}</span>
+    <ul class="footer-column-list" *ngFor="let item of footerMenu.list">
+      <li>{{ item }}</li>
+    </ul>
+  </div>
+</div>

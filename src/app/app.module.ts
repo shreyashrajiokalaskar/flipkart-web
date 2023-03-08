@@ -7,6 +7,8 @@ import { AppComponent } from "./app.component";
 import { RoutingModule } from "libs/web/src/lib/routing.module";
 import { UIComponentsModule } from "libs/ui-components/src/public-api";
 import { WebComponentsModule } from "libs/web/src/public-api";
+import { HttpInterceptorService } from "libs/shared/src/lib/http-interceptors/http-interceptor.service";
+import { SocketService } from "libs/shared/src/lib/services/socket-io.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,12 +21,12 @@ import { WebComponentsModule } from "libs/web/src/public-api";
     RoutingModule,
   ],
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: HttpInterceptorService,
-    //   multi: true,
-    // },
-    // SocketService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+    SocketService,
   ],
   bootstrap: [AppComponent],
 })

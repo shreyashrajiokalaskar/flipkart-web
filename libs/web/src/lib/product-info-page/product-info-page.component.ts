@@ -31,8 +31,9 @@ export class ProductInfoPageComponent implements OnInit {
       .getProductById(productId)
       .subscribe((productData: any) => {
         const { data } = productData;
-        data.rating = parseFloat(data.rating.toFixed(1));
-        if (data) this.productData = data;
+        const product = data.products[0];
+        product.rating = parseFloat(product.rating.toFixed(1));
+        if (product) this.productData = product;
         this.loadingData = false;
       });
   }

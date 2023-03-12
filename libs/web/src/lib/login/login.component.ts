@@ -1,3 +1,4 @@
+import { ToastrService } from "ngx-toastr";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -25,7 +26,11 @@ export class LoginComponent implements OnInit {
     lastName: "",
   };
 
-  constructor(private loginService: LoginService, private _router: Router) {
+  constructor(
+    private loginService: LoginService,
+    private _router: Router,
+    private toastrService: ToastrService
+  ) {
     this.loginForm = new FormGroup({
       email: new FormControl("", [Validators.email, Validators.required]),
       password: new FormControl("", [Validators.required]),
@@ -53,12 +58,18 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.get("email")?.value,
       password: this.loginForm.get("password")?.value,
     };
-    this.loginService.loginUser(userData).subscribe((response: any) => {
-      const { firstName, lastName } = response.data;
-      this.user.firstName = firstName;
-      this.user.lastName = lastName;
-      sessionStorage.setItem("userInfo", JSON.stringify(response.data));
-      this._router.navigate(["/home"]);
-    });
+    this.loginService.loginUser(userData).subscribe(
+      (response: any) => {
+        const { firstName, lastName } = response.data;
+        this.user.firstName = firstName;
+        this.user.lastName = lastName;
+        sessionStorage.setItem("userInfo", JSON.stringify(response.data));
+        this.toastrService.success("Logged IN", "Success");
+        this._router.navigate(["/home"]);
+      },
+      (error) => {
+        this.toastrService.error(error.error.error, "Error");
+      }
+    );
   }
 }

@@ -36,7 +36,7 @@ export class LoginService {
           return response;
         }),
         catchError((error) => {
-          throw error?.error?.message;
+          throw error;
         })
       );
   }

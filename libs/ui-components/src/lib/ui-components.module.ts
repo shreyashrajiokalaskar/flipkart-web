@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 import { FilterMenuComponent } from "./filter-menu/filter-menu.component";
 import { HeaderModule } from "./header/header.module";
 import { LoaderComponent } from "./loader/loader.component";
+import { ToastrComponent } from "./toastr/toastr.component";
 
 @NgModule({
   imports: [CommonModule, RouterModule, HeaderModule],
@@ -14,6 +15,7 @@ import { LoaderComponent } from "./loader/loader.component";
     FooterComponent,
     FilterMenuComponent,
     LoaderComponent,
+    ToastrComponent,
   ],
   exports: [
     NavBarComponent,
@@ -21,6 +23,7 @@ import { LoaderComponent } from "./loader/loader.component";
     FilterMenuComponent,
     HeaderModule,
     LoaderComponent,
+    ToastrComponent,
   ],
 })
 export class UIComponentsModule {}

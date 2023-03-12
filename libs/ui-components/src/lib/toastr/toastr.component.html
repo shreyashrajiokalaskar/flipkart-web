@@ -1,0 +1,36 @@
+<a (click)="remove()" class="btn btn-pink btn-sm float-right"> X </a>
+<div class="toastr-div">
+  <div class="row toastr-content">
+    <div class="title-heading">
+      <div *ngIf="title" [class]="options.titleClass" [attr.aria-label]="title">
+        {{ title }}
+      </div>
+      <div
+        *ngIf="message && options.enableHtml"
+        role="alert"
+        aria-live="polite"
+        [class]="options.messageClass"
+        [innerHTML]="message"
+      ></div>
+      <div
+        class="messege-description"
+        *ngIf="message && !options.enableHtml"
+        role="alert"
+        aria-live="polite"
+        [class]="options.messageClass"
+        [attr.aria-label]="message"
+      >
+        <span>
+          {{ message }}
+        </span>
+      </div>
+    </div>
+
+    <div class="col-3 text-right"></div>
+  </div>
+  <!-- <img
+    [ngClass]="{ 'close-icon-for-title': title, 'close-icon': !title }"
+    class="toastr-close-icon"
+    src="assets/images/icons/16x16/ic-close-toast.svg"
+  /> -->
+</div>

@@ -1,1 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../libs/shared/src/lib/styles/color-constants.scss";
+@import "../libs/shared/src/lib/styles/toast-customization.scss";
+@import "ngx-toastr/toastr";

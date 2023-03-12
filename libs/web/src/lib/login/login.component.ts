@@ -1,13 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { IUserData } from "libs/shared/src/lib/interfaces/common-interfaces";
-import { LoginService } from "./login.service";
+import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IUserData } from 'libs/shared/src/lib/interfaces/common-interfaces';
+import { LoginService } from './login.service';
 
 @Component({
-  selector: "flipkart-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"],
+  selector: 'flipkart-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
@@ -21,14 +22,18 @@ export class LoginComponent implements OnInit {
     firstName: string;
     lastName: string;
   } = {
-    firstName: "",
-    lastName: "",
+    firstName: '',
+    lastName: '',
   };
 
-  constructor(private loginService: LoginService, private _router: Router) {
+  constructor(
+    private loginService: LoginService,
+    private _router: Router,
+    private toastrService: ToastrService
+  ) {
     this.loginForm = new FormGroup({
-      email: new FormControl("", [Validators.email, Validators.required]),
-      password: new FormControl("", [Validators.required]),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('', [Validators.required]),
     });
   }
 
@@ -50,15 +55,21 @@ export class LoginComponent implements OnInit {
 
   login() {
     const userData = {
-      email: this.loginForm.get("email")?.value,
-      password: this.loginForm.get("password")?.value,
+      email: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value,
     };
-    this.loginService.loginUser(userData).subscribe((response: any) => {
-      const { firstName, lastName } = response.data;
-      this.user.firstName = firstName;
-      this.user.lastName = lastName;
-      sessionStorage.setItem("userInfo", JSON.stringify(response.data));
-      this._router.navigate(["/home"]);
-    });
+    this.loginService.loginUser(userData).subscribe(
+      (response: any) => {
+        const { firstName, lastName } = response.data;
+        this.user.firstName = firstName;
+        this.user.lastName = lastName;
+        sessionStorage.setItem('userInfo', JSON.stringify(response.data));
+        this.toastrService.success('Logged in successfully!', 'Success');
+        this._router.navigate(['/home']);
+      },
+      (error) => {
+        this.toastrService.error(error.error.error, 'Error');
+      }
+    );
   }
 }

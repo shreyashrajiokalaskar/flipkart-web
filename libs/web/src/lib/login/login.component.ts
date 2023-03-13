@@ -47,24 +47,30 @@ export class LoginComponent implements OnInit {
     sessionStorage.clear();
   }
 
-  createUser() {
-    this.loginForm.addControl(
-      'firstName',
-      new FormControl('', [Validators.required])
-    );
-    this.loginForm.addControl(
-      'lastName',
-      new FormControl('', [Validators.required])
-    );
+  createUser(backToLogin?: boolean) {
+    if (backToLogin) {
+      this.loginForm.removeControl('firstName');
+      this.loginForm.removeControl('lastName');
+    } else {
+      this.loginForm.addControl(
+        'firstName',
+        new FormControl('', [Validators.required])
+      );
+      this.loginForm.addControl(
+        'lastName',
+        new FormControl('', [Validators.required])
+      );
+    }
+
     const userData: IUserData = {
       email: this.loginForm.controls['email'].value,
       password: this.loginForm.controls['password'].value,
-      firstName: this.loginForm.controls['firstName'].value,
-      lastName: this.loginForm.controls['lastName'].value,
+      firstName: this.loginForm.controls['firstName']?.value,
+      lastName: this.loginForm.controls['lastName']?.value,
     };
   }
 
-  login(isNewUser: boolean) {
+  login(isNewUser?: boolean) {
     const userData: Partial<IUserData> = {
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value,

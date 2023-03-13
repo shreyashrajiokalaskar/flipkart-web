@@ -93,7 +93,7 @@
         >
         <div class="d-flex flex-column btns">
           <button
-            (click)="login(loginForm.controls['lastName'].valid)"
+            (click)="login(loginForm.get('lastName')?.valid)"
             type="submit"
             class="btn btn-primary submit-btn"
             [disabled]="loginForm.invalid"
@@ -107,12 +107,11 @@
             </button>
           </ng-container>
         </div>
-        <a
-          (click)="createUser()"
-          class="sign-up"
-          *ngIf="!loginForm.controls['lastName']"
-          >New to Flipkart? Create an account</a
-        >
+        <a (click)="createUser(!!loginForm.get('lastName'))" class="sign-up">{{
+          loginForm.controls['lastName']
+            ? 'Already have an account? Go to login'
+            : 'New to Flipkart? Create an account'
+        }}</a>
       </div>
     </div>
   </div>

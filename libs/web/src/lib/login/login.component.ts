@@ -32,7 +32,13 @@ export class LoginComponent implements OnInit {
     private toastrService: ToastrService
   ) {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.email, Validators.required]),
+      email: new FormControl('', [
+        Validators.email,
+        Validators.required,
+        Validators.pattern(
+          /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+        ),
+      ]),
       password: new FormControl('', [Validators.required]),
     });
   }
@@ -41,35 +47,62 @@ export class LoginComponent implements OnInit {
     sessionStorage.clear();
   }
 
-  createUser() {
+  createUser(backToLogin?: boolean) {
+    if (backToLogin) {
+      this.loginForm.removeControl('firstName');
+      this.loginForm.removeControl('lastName');
+    } else {
+      this.loginForm.addControl(
+        'firstName',
+        new FormControl('', [Validators.required])
+      );
+      this.loginForm.addControl(
+        'lastName',
+        new FormControl('', [Validators.required])
+      );
+    }
+
     const userData: IUserData = {
-      email: this.email,
-      password: this.password,
-      firstName: this.firstName,
-      lastName: this.lastName,
+      email: this.loginForm.controls['email'].value,
+      password: this.loginForm.controls['password'].value,
+      firstName: this.loginForm.controls['firstName']?.value,
+      lastName: this.loginForm.controls['lastName']?.value,
     };
-    this.loginService.createUser(userData).subscribe((response: any) => {
-      console.log(response);
-    });
   }
 
-  login() {
-    const userData = {
+  login(isNewUser?: boolean) {
+    const userData: Partial<IUserData> = {
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value,
     };
-    this.loginService.loginUser(userData).subscribe(
-      (response: any) => {
-        const { firstName, lastName } = response.data;
-        this.user.firstName = firstName;
-        this.user.lastName = lastName;
-        sessionStorage.setItem('userInfo', JSON.stringify(response.data));
-        this.toastrService.success('Logged in successfully!', 'Success');
-        this._router.navigate(['/home']);
-      },
-      (error) => {
-        this.toastrService.error(error.error.error, 'Error');
-      }
-    );
+    if (!isNewUser) {
+      this.loginService.loginUser(userData).subscribe(
+        (response: any) => {
+          const { firstName, lastName } = response.data;
+          this.user.firstName = firstName;
+          this.user.lastName = lastName;
+          sessionStorage.setItem('userInfo', JSON.stringify(response.data));
+          this.toastrService.success('Logged in successfully!', 'Success');
+          this._router.navigate(['/home']);
+        },
+        (error) => {
+          this.toastrService.error(error.error.error, 'Error');
+        }
+      );
+    } else {
+      userData['firstName'] = this.loginForm.controls['firstName'].value;
+      userData['lastName'] = this.loginForm.controls['lastName'].value;
+
+      this.loginService.createUser(userData as IUserData).subscribe(
+        (response: any) => {
+          this.toastrService.success('User created successfully!', 'Success');
+          this.loginForm.removeControl('firstName');
+          this.loginForm.removeControl('lastName');
+        },
+        (error) => {
+          this.toastrService.error(error.error.data, 'Error');
+        }
+      );
+    }
   }
 }

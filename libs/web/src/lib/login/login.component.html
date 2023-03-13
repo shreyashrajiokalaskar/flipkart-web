@@ -15,6 +15,38 @@
       <div class="col-7 d-flex flex-column">
         <form [formGroup]="loginForm">
           <div class="mb-3">
+            <div
+              class="margin-bottom-32"
+              *ngIf="loginForm.controls['firstName']"
+            >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="firstName"
+                id="exampleInputEmail1"
+                placeholder="Enter first name"
+                aria-describedby="emailHelp"
+              />
+              <span class="error" *ngIf="!loginForm.controls['firstName'].value"
+                >First name cannot be empty!!!</span
+              >
+            </div>
+            <div
+              class="margin-bottom-32"
+              *ngIf="loginForm.controls['lastName']"
+            >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="lastName"
+                id="exampleInputEmail1"
+                placeholder="Enter last name"
+                aria-describedby="emailHelp"
+              />
+              <span class="error" *ngIf="!loginForm.controls['lastName'].value"
+                >Last name cannot be empty!!!</span
+              >
+            </div>
             <div class="margin-bottom-32">
               <input
                 type="email"
@@ -24,6 +56,17 @@
                 placeholder="Enter Email/Phone number"
                 aria-describedby="emailHelp"
               />
+              <span class="error" *ngIf="!loginForm.controls['email'].value"
+                >Email cannot be empty!!!</span
+              >
+              <span
+                class="error"
+                *ngIf="
+                  loginForm.controls['email'].value &&
+                  loginForm.controls['email'].invalid
+                "
+                >Please enter valid email.</span
+              >
             </div>
           </div>
           <div class="margin-bottom-32">
@@ -34,7 +77,13 @@
                 id="exampleInputPassword1"
                 formControlName="password"
                 placeholder="Enter Password"
-              /><span class="input-group-text">Forgot?</span>
+              />
+              <span
+                class="error invalid-password"
+                *ngIf="!loginForm.controls['password'].value"
+                >Please enter valid email.</span
+              >
+              <span class="input-group-text">Forgot?</span>
             </div>
           </div>
         </form>
@@ -44,18 +93,25 @@
         >
         <div class="d-flex flex-column btns">
           <button
-            (click)="login()"
+            (click)="login(loginForm.get('lastName')?.valid)"
             type="submit"
             class="btn btn-primary submit-btn"
+            [disabled]="loginForm.invalid"
           >
-            Submit
+            {{ loginForm.controls['lastName'] ? 'Create Account' : 'Submit' }}
           </button>
-          <span class="or-text">OR</span>
-          <button type="button" class="btn btn-light request-otp-btn">
-            Request OTP
-          </button>
+          <ng-container *ngIf="!loginForm.controls['lastName']">
+            <span class="or-text">OR</span>
+            <button type="button" class="btn btn-light request-otp-btn">
+              Request OTP
+            </button>
+          </ng-container>
         </div>
-        <a href="" class="sign-up">New to Flipkart? Create an account</a>
+        <a (click)="createUser(!!loginForm.get('lastName'))" class="sign-up">{{
+          loginForm.controls['lastName']
+            ? 'Already have an account? Go to login'
+            : 'New to Flipkart? Create an account'
+        }}</a>
       </div>
     </div>
   </div>

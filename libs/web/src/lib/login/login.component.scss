@@ -94,3 +94,15 @@
 .btn {
   height: 3rem;
 }
+
+.error {
+  color: var(--subtle_red);
+  position: absolute;
+  font-size: 0.625rem;
+  margin-top: 0.125rem;
+  font-weight: 500;
+}
+
+.invalid-password {
+  margin-top: 2.5rem;
+}

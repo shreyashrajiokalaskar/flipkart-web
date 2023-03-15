@@ -1,0 +1,13 @@
+<div class="lists-wrapper" *ngIf="menuViewed">
+    <div class="list" *ngFor="let lists of menuViewed.lists">
+        <div class="list-header" >
+            <span class="list-header">{{lists.listHeader}}&nbsp;</span>
+            <i class="fa fa-caret-right"></i>
+        </div>
+        <ul class="list-type" *ngFor="let item of lists.list" >
+            <li class="list-item">{{item}}</li>
+        </ul>
+    </div>
+
+   
+</div>

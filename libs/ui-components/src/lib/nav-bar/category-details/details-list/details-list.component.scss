@@ -1,0 +1,26 @@
+.lists-wrapper{
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4), 0 2px 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+.list{
+    font-size: 14px;
+    padding: 6px 24px;
+    cursor: pointer;
+}
+
+.list-header{
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.list-type{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.list-item{
+    line-height: 2;
+}

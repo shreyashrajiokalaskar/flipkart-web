@@ -1,58 +1,62 @@
-<div class="filter-menu-wrapper">
-  <div class="filter-header">
-    <span>Filters</span>
-  </div>
+<div class="filter-menu-wrapper" >
 
-  <div class="filter-menu filter-menu-item-wrapper">
-    <span class="filter-menu-subtitle">CATEGORIES</span>
-
-    <div class="filter-menu-list">
-      <div class="accordion">
-        <i class="fa fa-angle-down" (click)="onToggleMenu()"> </i>
-        <span> Cameras & Accessories</span>
-      </div>
-
-      <ul class="filter-menu-list-item accordion-panel">
-        <li>Cameras</li>
-        <li>Camera Accessories</li>
-      </ul>
+    <div class="filter-header">
+        <span>Filters</span>
     </div>
-  </div>
+    
+    <div class="filter-menu filter-menu-item-wrapper">
+        <span class="filter-menu-subtitle">CATEGORIES</span>
 
-  <div class="filter-menu filter-menu-item-wrapper">
-    <span class="filter-menu-subtitle">PRICE</span>
-  </div>
-
-  <div
-    class="filter-menu-item-wrapper filter-menu"
-    *ngFor="let filterMenu of filterMenuList; let i = index"
-  >
-    <div class="filter-menu-header accordion">
-      <span class="filter-menu-subtitle" (click)="onToggleMenu()">{{
-        filterMenu.menuName
-      }}</span>
-      <i class="fa fa-chevron-up filter-menu-subtitle"></i>
+        <div class="filter-menu-list" >
+            <div class="accordion">
+                <i 
+                class="fa fa-angle-down" 
+                (click)="onToggleMenu()">
+                </i>
+                <span> Cameras & Accessories</span>
+            </div>
+            
+            <ul class="filter-menu-list-item accordion-panel" >
+                <li >Cameras</li>
+                <li >Camera Accessories</li>
+            </ul>
+        </div>
     </div>
 
-    <div class="filter-menu-list accordion-panel">
-      <div class="brand-search-box">
-        <!--  *ngIf="filterMenu.wantSearchBox" -->
-        <i class="fa fa-search search-icon"></i>
-        <input type="text" class="brand-search" />
-      </div>
-
-      <div
-        class="filter-menu-list-item"
-        *ngFor="let menuOption of filterMenu.menuOptions"
-      >
-        <input type="checkbox" id="canon" name="canon" />
-        <label for="canon">&nbsp;{{ menuOption }}</label>
-      </div>
-      <hr />
-      <span style="color: blue; font-size: 12px">
-        <!--*ngIf="filterMenu.wantMoreInfo"  -->
-        5580 More
-      </span>
+    <div class="filter-menu filter-menu-item-wrapper ">
+        <span class="filter-menu-subtitle" >PRICE</span>
     </div>
-  </div>
+
+
+    <div   
+        class="filter-menu-item-wrapper filter-menu"
+        *ngFor = "let filterMenu of filterMenuList;let i = index ">
+
+        <div class="filter-menu-header accordion" >
+           <span class="filter-menu-subtitle" (click)= "onToggleMenu()">{{ filterMenu.menuName }}</span>
+           <i class="fa fa-chevron-up filter-menu-subtitle"></i> 
+        </div>
+
+        <div class="filter-menu-list accordion-panel">
+            
+            <div class="brand-search-box" *ngIf = filterMenu.wantSearchBox>
+                <i class="fa fa-search search-icon"></i>
+                <input type="text" class="brand-search">
+            </div>
+            
+            <div 
+                class="filter-menu-list-item" 
+                *ngFor = "let menuOption of filterMenu.menuOptions">
+                <input type="checkbox" id="canon" name="canon">
+                <label for="canon">&nbsp;{{ menuOption }}</label>
+            </div>
+            <hr>
+            <span style="color: blue;font-size: 12px;" *ngIf = filterMenu.wantMoreInfo>
+                5580 More
+            </span>
+        </div>  
+    </div>
+
+    
 </div>
+

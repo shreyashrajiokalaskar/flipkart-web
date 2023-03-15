@@ -1,0 +1,14 @@
+<div class="onHover-panel-wrapper" *ngIf="isHidden">
+
+    <div class="menu-item" *ngFor="let menu of menuList ">
+        <div>
+            <i [ngClass]= 'menu.menuSymbol' class="menu-item-icon"></i>
+            <span>{{menu.menuItem}}</span>
+        </div>
+        
+        <a href="#" *ngIf="menu.menuItem ==='New Customer ?' ">Sign Up</a>
+    </div>
+    
+</div>
+    
+

@@ -7,6 +7,7 @@
       <flipkart-pagination
         [active]="activePage"
         [totalCount]="totalCount"
+        (pageChanged)="pageChanged($event)"
       ></flipkart-pagination>
     </div>
   </div>

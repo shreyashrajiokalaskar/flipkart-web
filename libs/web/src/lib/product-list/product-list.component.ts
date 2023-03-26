@@ -27,8 +27,7 @@ export class ProductListComponent {
     this.productService.getProducts(params).subscribe(
       (products: any) => {
         if (products.data.totalCount) {
-          console.log(products.data.totalCount);
-          this.totalCount = products.data.totalCount;
+          this.totalCount = products.data.totalCount / 10;
           this.products = [...products.data.products];
           this.isEmpty = false;
         } else {
@@ -38,5 +37,9 @@ export class ProductListComponent {
       },
       (error) => {}
     );
+  }
+
+  pageChanged(pageNumber: number) {
+    this.getProducts(`?pageNumber=${pageNumber}`);
   }
 }

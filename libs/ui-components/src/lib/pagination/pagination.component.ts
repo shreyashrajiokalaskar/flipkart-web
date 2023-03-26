@@ -40,8 +40,8 @@ export class PaginationComponent implements OnInit, OnChanges {
       }
     } else {
       if (this.active !== this.pages[this.pages.length - 1]) {
-        this.pageChanged.next(pageNumber as number);
         this.active++;
+        this.pageChanged.next(this.active as number);
       }
     }
   }

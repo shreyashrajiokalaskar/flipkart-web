@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocketService } from 'libs/shared/src/lib/services/socket-io.service';
+import { searchProducts } from 'libs/shared/src/public-api';
+import { ProductService } from 'libs/web/src/lib/product-list/product.service';
 
 @Component({
   selector: 'flipkart-header',
@@ -9,12 +11,17 @@ import { SocketService } from 'libs/shared/src/lib/services/socket-io.service';
 })
 export class HeaderComponent implements OnInit {
   search = '';
-  constructor(private socketService: SocketService, private router: Router) {}
+  constructor(
+    private socketService: SocketService,
+    private router: Router,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {}
 
   searchString() {
-    this.socketService.socket.emit('', this.search);
+    const params = `?searchColumn=title&searchString=${this.search}`;
+    searchProducts.next(params);
   }
 
   logout() {

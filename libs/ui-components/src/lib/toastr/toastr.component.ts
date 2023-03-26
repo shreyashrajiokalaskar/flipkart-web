@@ -56,6 +56,5 @@ export class ToastrComponent extends Toast implements OnInit {
         this._closeButtonClass = "btn-default";
         break;
     }
-    console.log(this._toastrClass, this._closeButtonClass);
   }
 }

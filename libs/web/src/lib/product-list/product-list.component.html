@@ -1,6 +1,11 @@
-<div class="wrapper">
-  <ng-container *ngFor="let product of products; let index = index"
-    ><flipkart-product [product]="product" [index]="index"></flipkart-product
-  ></ng-container>
-</div>
-<flipkart-loader [loading]="loadingData"></flipkart-loader>
+<ng-container class="content"
+  ><div class="wrapper" *ngIf="!isEmpty">
+    <ng-container *ngFor="let product of products; let index = index"
+      ><flipkart-product [product]="product" [index]="index"></flipkart-product
+    ></ng-container>
+  </div>
+  <flipkart-loader [loading]="loadingData"></flipkart-loader>
+  <div class="no-result" *ngIf="isEmpty">
+    <img src="assets/no-results.jpg" class="no-result-img" alt="" srcset="" />
+  </div>
+</ng-container>

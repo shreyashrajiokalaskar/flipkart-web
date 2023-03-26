@@ -11,11 +11,11 @@
       </div>
       <div class="search-container">
         <input type="text" class="search-box" [(ngModel)]="search" />
-        <i class="fa fa-search"></i>
+        <i class="fa fa-search" (click)="searchString()"></i>
       </div>
     </div>
 
-    <div class="more-button" (click)="searchString()">
+    <div class="more-button">
       <span>More&nbsp;</span>
       <i class="fa fa-angle-down"></i>
     </div>

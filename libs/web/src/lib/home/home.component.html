@@ -2,6 +2,8 @@
 <flipkart-nav-bar></flipkart-nav-bar>
 <div class="main-body">
   <app-filter-menu *ngIf="!hideSidenav" class="side-nav"></app-filter-menu>
-  <router-outlet></router-outlet>
+  <div class="content-wrapper">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 <flipkart-footer></flipkart-footer>

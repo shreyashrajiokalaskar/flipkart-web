@@ -12,6 +12,8 @@ export class ProductListComponent {
   products: IProduct[] = [];
   loadingData = true;
   isEmpty = false;
+  totalCount!: number;
+  activePage = 1;
 
   constructor(private productService: ProductService) {}
 
@@ -25,6 +27,8 @@ export class ProductListComponent {
     this.productService.getProducts(params).subscribe(
       (products: any) => {
         if (products.data.totalCount) {
+          console.log(products.data.totalCount);
+          this.totalCount = products.data.totalCount;
           this.products = [...products.data.products];
           this.isEmpty = false;
         } else {

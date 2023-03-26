@@ -3,6 +3,12 @@
     <ng-container *ngFor="let product of products; let index = index"
       ><flipkart-product [product]="product" [index]="index"></flipkart-product
     ></ng-container>
+    <div class="pagination-wrapper">
+      <flipkart-pagination
+        [active]="activePage"
+        [totalCount]="totalCount"
+      ></flipkart-pagination>
+    </div>
   </div>
   <flipkart-loader [loading]="loadingData"></flipkart-loader>
   <div class="no-result" *ngIf="isEmpty">

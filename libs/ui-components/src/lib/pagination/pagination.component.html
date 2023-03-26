@@ -1,0 +1,13 @@
+<div class="pagination-wrapper">
+  <div
+    class="page"
+    *ngFor="let page of pages"
+    [ngClass]="{
+      active: page === active
+    }"
+    (click)="changePage(page)"
+  >
+    {{ page }}
+  </div>
+  <span (click)="changePage()" class="next-btn">NEXT</span>
+</div>

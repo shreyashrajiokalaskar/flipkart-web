@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   searchString() {
-    this.socketService.socket.emit('', this.search);
+    // this.socketService.socket.emit('', this.search);
   }
 
   logout() {

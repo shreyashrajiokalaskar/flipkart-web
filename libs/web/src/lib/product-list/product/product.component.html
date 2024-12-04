@@ -6,7 +6,7 @@
     [routerLink]="'./product/' + product.id"
   >
     <i [id]="index" class="fa fa-heart heart-icon"></i>
-    <img class="product-image" [src]="product.thumbnail" alt="" />
+    <img class="product-image" [src]="getImagePath()" alt="" />
   </div>
 
   <div class="product-info-center-panel">

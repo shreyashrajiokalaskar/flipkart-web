@@ -76,8 +76,8 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password')?.value,
     };
     if (!isNewUser) {
-      this.loginService.loginUser(userData).subscribe(
-        (response: any) => {
+      this.loginService.loginUser(userData).subscribe({
+        next: (response: any) => {
           const { firstName, lastName } = response.data;
           this.user.firstName = firstName;
           this.user.lastName = lastName;
@@ -85,24 +85,24 @@ export class LoginComponent implements OnInit {
           this.toastrService.success('Logged in successfully!', 'Success');
           this._router.navigate(['/home']);
         },
-        (error) => {
-          this.toastrService.error(error.error.error, 'Error');
-        }
-      );
+        error: (error) => {
+          this.toastrService.error(error?.error?.message, 'Error');
+        },
+      });
     } else {
       userData['firstName'] = this.loginForm.controls['firstName'].value;
       userData['lastName'] = this.loginForm.controls['lastName'].value;
 
-      this.loginService.createUser(userData as IUserData).subscribe(
-        (response: any) => {
+      this.loginService.createUser(userData as IUserData).subscribe({
+        next: (response: any) => {
           this.toastrService.success('User created successfully!', 'Success');
           this.loginForm.removeControl('firstName');
           this.loginForm.removeControl('lastName');
         },
-        (error) => {
-          this.toastrService.error(error.error.data, 'Error');
-        }
-      );
+        error: (error) => {
+          this.toastrService.error(error?.error?.message, 'Error');
+        },
+      });
     }
   }
 }

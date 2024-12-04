@@ -7,7 +7,7 @@ export class SocketService {
   socket: any;
 
   constructor() {
-    const { SOCKET_URL } = environment;
-    this.socket = io(SOCKET_URL);
+    // const { SOCKET_URL } = environment;
+    // this.socket = io(SOCKET_URL);
   }
 }

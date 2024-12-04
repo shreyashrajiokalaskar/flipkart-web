@@ -15,7 +15,9 @@ export interface IProduct {
   rating: number;
   stock: number;
   brand: string;
-  category: string;
+  category: {
+    slug: string;
+  };
   thumbnail: string;
   __v: number;
 }

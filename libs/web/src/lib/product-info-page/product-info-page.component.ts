@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { IProduct } from "libs/shared/src/lib/interfaces/common-interfaces";
+import { environment } from "libs/shared/src/lib/environments/environment";
 
 @Component({
   selector: "app-product-info-page",
@@ -31,10 +32,13 @@ export class ProductInfoPageComponent implements OnInit {
       .getProductById(productId)
       .subscribe((productData: any) => {
         const { data } = productData;
-        const product = data.products[0];
-        product.rating = parseFloat(product.rating.toFixed(1));
-        if (product) this.productData = product;
+        data.rating = parseFloat(data?.rating?.toFixed(1) ?? 0);
+        if (data) {this.productData = data; this.productData.images =  [this.getImagePath()];}
         this.loadingData = false;
       });
   }
+
+    getImagePath(): string {
+      return `${environment.IMAGE_CDN}/${this.productData.category.slug}/${this.productData.title}/thumbnail.png`;
+    }
 }

@@ -21,12 +21,16 @@ const routes: Routes = [
     // canActivate: [LoginAuthGuard],
     children: [
       {
-        path: '',
+        path: 'product/:id',
+        component: ProductInfoPageComponent,
+      },
+      {
+        path: 'category/:id',
         component: ProductListComponent,
       },
       {
-        path: 'product/:id',
-        component: ProductInfoPageComponent,
+        path: '',
+        component: ProductListComponent,
       },
     ],
   },

@@ -26,3 +26,17 @@ export interface IProductsResponse {
   data: IProduct;
   status: number;
 }
+
+export interface ICategory {
+  id: string,
+  createdAt: string,
+  updatedAt: string,
+  deletedAt: string,
+  slug: string,
+  name: string
+}
+
+export interface ICategoriesResponse {
+  data:{categories: ICategory[]},
+  status:number;
+}

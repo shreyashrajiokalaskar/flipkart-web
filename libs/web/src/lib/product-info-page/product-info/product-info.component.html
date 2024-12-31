@@ -1,14 +1,14 @@
 <div class="main-body-header">
-  <span class="ellipsis">Home&nbsp;&nbsp;</span>
+  <span class="ellipsis back" routerLink="/home" >Home&nbsp;&nbsp;</span>
   <i class="fa fa-angle-right"></i>
-  <span class="ellipsis">&nbsp;&nbsp;Camera & Accessories&nbsp;&nbsp;</span>
+  <span class="ellipsis">&nbsp;&nbsp;{{productData?.brand ?? 'General'}}&nbsp;&nbsp;</span>
   <i class="fa fa-angle-right"></i>
-  <span class="ellipsis">&nbsp;&nbsp;Cameras&nbsp;&nbsp;</span>
-  <i class="fa fa-angle-right"></i>
-  <span routerLink="/home" class="ellipsis back"
+  <!-- <span class="ellipsis">&nbsp;&nbsp;Cameras&nbsp;&nbsp;</span>
+  <i class="fa fa-angle-right"></i> -->
+  <!-- <span class="ellipsis back"
     >&nbsp;&nbsp;DSLR & Mirror&nbsp;&nbsp;</span
   >
-  <i class="fa fa-angle-right"></i>
+  <i class="fa fa-angle-right"></i> -->
   <span class="ellipsis">&nbsp;&nbsp;{{ productData.title }}</span>
 </div>
 <hr />
@@ -16,6 +16,9 @@
   <span class="product-name">
     {{ productData.title }}
   </span>
+  <p class="product-name">
+    {{ productData.description }}
+  </p>
   <div class="rating-card">
     <div class="product-rating-card">
       <span>{{ productData.rating }}&nbsp;</span>
@@ -34,9 +37,9 @@
   </div>
   <div class="price-card">
     <span class="product-price-current">₹&nbsp;{{ productData.price }}</span>
-    <span class="original-price">₹&nbsp;{{ productData.price }}</span>
+    <span class="original-price">₹&nbsp;{{ (productData.price* (100+productData.discountPercentage)/100) | currency: '': '' }}</span>
     <span class="discount-amount"
-      >₹&nbsp;{{ productData.discountPercentage }} off</span
+      >&nbsp;{{ productData.discountPercentage }}% off</span
     >
     <span class="info">i</span>
   </div>

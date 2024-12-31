@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "libs/shared/src/lib/environments/environment";
-import { IProductsResponse } from "libs/shared/src/lib/interfaces/common-interfaces";
+import { ICategoriesResponse, IProductsResponse } from "libs/shared/src/lib/interfaces/common-interfaces";
 import { map, catchError } from "rxjs";
 
 @Injectable({
@@ -22,6 +22,19 @@ export class ProductService {
           throw error.error.message;
         })
       );
+  }
+
+  getCategories(id?:string){
+    return this.httpClient
+    .get<ICategoriesResponse>(`${this.FLIPKART_API_URL}/category${id ? '/'+id : ''}`)
+    .pipe(
+      map((response: ICategoriesResponse) => {
+        return response;
+      }),
+      catchError((error) => {
+        throw error.error.message;
+      })
+    );
   }
 
   getProductById(id: string) {

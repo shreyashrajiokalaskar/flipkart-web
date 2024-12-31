@@ -3,7 +3,7 @@
     <span>Filters</span>
   </div>
 
-  <div class="filter-menu filter-menu-item-wrapper">
+  <!-- <div class="filter-menu filter-menu-item-wrapper">
     <span class="filter-menu-subtitle">CATEGORIES</span>
 
     <div class="filter-menu-list">
@@ -21,14 +21,14 @@
 
   <div class="filter-menu filter-menu-item-wrapper">
     <span class="filter-menu-subtitle">PRICE</span>
-  </div>
+  </div> -->
 
   <div
     class="filter-menu-item-wrapper filter-menu"
     *ngFor="let filterMenu of filterMenuList; let i = index"
   >
-    <div class="filter-menu-header accordion">
-      <span class="filter-menu-subtitle" (click)="onToggleMenu()">{{
+    <div class="filter-menu-header accordion" [routerLink]="'./category/' + filterMenu.id">
+      <span class="filter-menu-subtitle" (click)="onToggleMenu(i)" [ngClass]="{'active': selectedMenu?.id === filterMenu.id}">{{
         filterMenu.menuName
       }}</span>
       <i class="fa fa-chevron-up filter-menu-subtitle"></i>

@@ -31,9 +31,10 @@ export class ProductInfoPageComponent implements OnInit {
     this.productService
       .getProductById(productId)
       .subscribe((productData: any) => {
-        const { data } = productData;
-        data.rating = parseFloat(data?.rating?.toFixed(1) ?? 0);
-        if (data) {this.productData = data; this.productData.images =  [this.getImagePath()];}
+        console.log(productData)
+        const { result } = productData;
+        result.rating = parseFloat(result?.rating?.toFixed(1) ?? 0);
+        if (result) {this.productData = result; this.productData.images =  [this.getImagePath()];}
         this.loadingData = false;
       });
   }

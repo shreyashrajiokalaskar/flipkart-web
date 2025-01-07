@@ -47,7 +47,7 @@ export class FilterMenuComponent implements OnInit {
         if (this.router.url.includes('/category')) {
           categoryId = this.router.url.split('/').reverse()[0];
         }
-        res.data.categories.forEach((category: ICategory) => {
+        res.result.forEach((category: ICategory) => {
           const categoryObj = {
             menuName: category.name,
             id: category.id,

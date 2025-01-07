@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "libs/shared/src/lib/environments/environment";
-import { ICategoriesResponse, IProductsResponse } from "libs/shared/src/lib/interfaces/common-interfaces";
+import { ICategory, IProduct, ISuccessResponse } from "libs/shared/src/lib/interfaces/common-interfaces";
 import { map, catchError } from "rxjs";
 
 @Injectable({
@@ -13,9 +13,9 @@ export class ProductService {
 
   getProducts() {
     return this.httpClient
-      .get<IProductsResponse>(`${this.FLIPKART_API_URL}/products`)
+      .get<ISuccessResponse<IProduct[]>>(`${this.FLIPKART_API_URL}/products`)
       .pipe(
-        map((response: IProductsResponse) => {
+        map((response: ISuccessResponse<IProduct[]>) => {
           return response;
         }),
         catchError((error) => {
@@ -26,9 +26,9 @@ export class ProductService {
 
   getCategories(id?:string){
     return this.httpClient
-    .get<ICategoriesResponse>(`${this.FLIPKART_API_URL}/category${id ? '/'+id : ''}`)
+    .get<ISuccessResponse<ICategory[]>>(`${this.FLIPKART_API_URL}/category${id ? '/'+id : ''}`)
     .pipe(
-      map((response: ICategoriesResponse) => {
+      map((response: ISuccessResponse<ICategory[]>) => {
         return response;
       }),
       catchError((error) => {
@@ -39,9 +39,9 @@ export class ProductService {
 
   getProductById(id: string) {
     return this.httpClient
-      .get<IProductsResponse>(`${this.FLIPKART_API_URL}/products/${id}`)
+      .get<ISuccessResponse<IProduct>>(`${this.FLIPKART_API_URL}/products/${id}`)
       .pipe(
-        map((response: IProductsResponse) => {
+        map((response: ISuccessResponse<IProduct>) => {
           return response;
         }),
         catchError((error) => {

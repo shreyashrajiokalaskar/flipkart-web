@@ -38,8 +38,9 @@ export class ProductListComponent {
   getProductByCategory(categoryId:string){
     this.productService.getCategories(categoryId).subscribe({
       next: (products:any)=>{
-        if (products.totalCount) {
-          this.products = [...products.data];
+        console.log(products)
+        if (products.count) {
+          this.products = [...products.result];
         }
         this.loadingData = false;
       },
@@ -52,8 +53,9 @@ export class ProductListComponent {
   getProducts() {
     this.productService.getProducts().subscribe(
       (products: any) => {
-        if (products.data.totalCount) {
-          this.products = [...products.data.products];
+        console.log(products)
+        if (products.count) {
+          this.products = [...products.result];
         }
         this.loadingData = false;
       },

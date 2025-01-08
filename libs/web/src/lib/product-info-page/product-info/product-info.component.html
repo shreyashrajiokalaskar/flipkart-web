@@ -1,7 +1,9 @@
 <div class="main-body-header">
-  <span class="ellipsis back" routerLink="/home" >Home&nbsp;&nbsp;</span>
+  <span class="ellipsis back" routerLink="/home">Home&nbsp;&nbsp;</span>
   <i class="fa fa-angle-right"></i>
-  <span class="ellipsis">&nbsp;&nbsp;{{productData?.brand ?? 'General'}}&nbsp;&nbsp;</span>
+  <span class="ellipsis"
+    >&nbsp;&nbsp;{{ productData?.brand ?? 'General' }}&nbsp;&nbsp;</span
+  >
   <i class="fa fa-angle-right"></i>
   <!-- <span class="ellipsis">&nbsp;&nbsp;Cameras&nbsp;&nbsp;</span>
   <i class="fa fa-angle-right"></i> -->
@@ -37,13 +39,20 @@
   </div>
   <div class="price-card">
     <span class="product-price-current">₹&nbsp;{{ productData.price }}</span>
-    <span class="original-price">₹&nbsp;{{ (productData.price* (100+productData.discountPercentage)/100) | currency: '': '' }}</span>
+    <span class="original-price"
+      >₹&nbsp;{{
+        (productData.price * (100 + productData.discountPercentage)) / 100
+          | currency : '' : ''
+      }}</span
+    >
     <span class="discount-amount"
       >&nbsp;{{ productData.discountPercentage }}% off</span
     >
     <span class="info">i</span>
   </div>
-  <span class="stock-alert">Hury, Only 7 left!</span>
+  <span class="stock-alert" *ngIf="productData.stock < 10"
+    >Hurry, Only {{ productData.stock }} left!</span
+  >
 
   <br />
 
@@ -55,4 +64,31 @@
     </div>
     <span class="view-more-offers">View 4 more offers</span>
   </div> -->
+
+  <div class="delivery">
+    <span class="delivery-title">Delivery</span>
+    <div class="pincode" dropdown>
+      <input type="number" [formControl]="pincodeInput" />
+      <button
+        (click)="checkPincode()"
+        dropdownToggle
+        [disabled]="pincodeInput.invalid || !pincodeInput.value"
+      >
+        Check
+      </button>
+      <ul
+        id="dropdown-basic"
+        *dropdownMenu
+        class="dropdown-menu"
+        role="menu"
+        aria-labelledby="button-basic"
+      >
+        <li role="menuitem" *ngFor="let pincode of pincodes" class="menu-item">
+          <a class="dropdown-item"
+            >{{ pincode.name }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

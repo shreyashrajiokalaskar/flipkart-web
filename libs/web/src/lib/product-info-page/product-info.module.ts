@@ -6,6 +6,7 @@ import { ProductInfoComponent } from "./product-info/product-info.component";
 import { ProductPhotosComponent } from "./product-photos/product-photos.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { UIComponentsModule } from "libs/ui-components/src/public-api";
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { UIComponentsModule } from "libs/ui-components/src/public-api";
     RouterModule,
     UIComponentsModule,
     ReactiveFormsModule,
+    BsDropdownModule
   ],
   declarations: [
     ProductInfoComponent,

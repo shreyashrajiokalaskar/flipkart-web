@@ -32,6 +32,7 @@
   background-color: #388e3c;
   margin-right: 8px;
 }
+
 .star-icon {
   font-size: 12px;
   background-color: #388e3c;
@@ -106,4 +107,76 @@
 
 .back {
   cursor: pointer;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+
+
+  .delivery {
+    display: flex;
+    flex-direction: row;
+
+
+    .delivery-title {
+      color: #878787;
+      width: 110px;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .pincode {
+      position: relative;
+      padding: 0 0 4px;
+      border: none;
+      border-bottom: 2px solid #2874f0;
+      font-weight: 500;
+
+      input {
+        font-weight: 500;
+        font-size: 14px;
+        border: none;
+        outline: none;
+        width: auto;
+        padding-left: 6px;
+        vertical-align: middle;
+      }
+
+      button {
+        font-weight: 500;
+        cursor: pointer;
+        font-size: 14px;
+        color: #2874f0;
+        margin-left: auto;
+        border: none;
+        background-color: white;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.dropdown-menu {
+  margin-top: 4px;
+  max-height: 128px;
+  overflow-y: auto;
+  width: 220px;
+}
+
+.menu-item {
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+
+.menu-item:last-of-type {
+  border-bottom: 0;
+}
+
+.dropdown-item {
+  font-size: 12px;
+  font-weight: 700;
 }

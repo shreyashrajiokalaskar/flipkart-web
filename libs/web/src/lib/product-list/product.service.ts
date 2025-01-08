@@ -1,11 +1,16 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { environment } from "libs/shared/src/lib/environments/environment";
-import { ICategory, IProduct, ISuccessResponse } from "libs/shared/src/lib/interfaces/common-interfaces";
-import { map, catchError } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'libs/shared/src/lib/environments/environment';
+import {
+  ICategory,
+  ICity,
+  IProduct,
+  ISuccessResponse,
+} from 'libs/shared/src/lib/interfaces/common-interfaces';
+import { map, catchError } from 'rxjs';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class ProductService {
   constructor(private httpClient: HttpClient) {}
@@ -24,28 +29,47 @@ export class ProductService {
       );
   }
 
-  getCategories(id?:string){
+  getCategories(id?: string) {
     return this.httpClient
-    .get<ISuccessResponse<ICategory[]>>(`${this.FLIPKART_API_URL}/category${id ? '/'+id : ''}`)
-    .pipe(
-      map((response: ISuccessResponse<ICategory[]>) => {
-        return response;
-      }),
-      catchError((error) => {
-        throw error.error.message;
-      })
-    );
+      .get<ISuccessResponse<ICategory[]>>(
+        `${this.FLIPKART_API_URL}/category${id ? '/' + id : ''}`
+      )
+      .pipe(
+        map((response: ISuccessResponse<ICategory[]>) => {
+          return response;
+        }),
+        catchError((error) => {
+          throw error.error.message;
+        })
+      );
   }
 
   getProductById(id: string) {
     return this.httpClient
-      .get<ISuccessResponse<IProduct>>(`${this.FLIPKART_API_URL}/products/${id}`)
+      .get<ISuccessResponse<IProduct>>(
+        `${this.FLIPKART_API_URL}/products/${id}`
+      )
       .pipe(
         map((response: ISuccessResponse<IProduct>) => {
           return response;
         }),
         catchError((error) => {
           throw error.error.message;
+        })
+      );
+  }
+
+  checkPincodeValidity(pincode: number) {
+    return this.httpClient
+      .get<ISuccessResponse<ICity[]>>(
+        `${this.FLIPKART_API_URL}/common/pincodes/${pincode}`
+      )
+      .pipe(
+        map((response: ISuccessResponse<ICity[]>) => {
+          return response;
+        }),
+        catchError((error) => {
+          throw error.error;
         })
       );
   }

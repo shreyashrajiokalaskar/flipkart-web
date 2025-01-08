@@ -36,3 +36,11 @@ export interface ISuccessResponse<T> {
   status: number;
   count: number;
 }
+
+export interface ICity {
+  id: string;
+  pincode: number;
+  name: string;
+  district: string;
+  state: string;
+}

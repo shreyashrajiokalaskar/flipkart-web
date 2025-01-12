@@ -1,0 +1,92 @@
+<div class="profile-container col-12 container">
+  <div class="profile-home d-flex flex-row gap-3 section">
+    <img src="assets/user.svg" alt="" />
+    <div class="user-full-name d-flex flex-column gap-1">
+      <span class="hello-txt">Hello,</span>
+      <span class="name"
+        >{{ userDetails.firstName }} {{ userDetails.lastName }}</span
+      >
+    </div>
+  </div>
+  <div class="basic-details section d-flex flex-column gap-3">
+    <span>Personal Information</span>
+    <div class="input-fields d-flex flex-row gap-3">
+      <input type="text" disabled [value]="userDetails.firstName" />
+      <input type="text" disabled [value]="userDetails.lastName" />
+    </div>
+
+    <div class="user-gender d-flex flex-column">
+      <span class="font-14">Your Gender</span>
+      <div class="d-flex flex-row">
+        <div class="gender d-flex flex-row gap-2">
+          <input type="radio" name="male" id="male" checked disabled />
+          <span>Male</span>
+        </div>
+        <div class="gender d-flex flex-row gap-2">
+          <input type="radio" name="female" id="female" disabled />
+          <span>Female</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-fields d-flex flex-column gap-2">
+      <div class="label-container">
+        <span class="input-label">Email Address</span>
+        <button class="tertiary-btn">
+          {{ userDetails.email ? 'Edit' : 'Add' }}
+        </button>
+      </div>
+      <input type="text" disabled [value]="userDetails.email" />
+    </div>
+
+    <div class="input-fields d-flex flex-column gap-2">
+      <div class="label-container">
+        <span class="input-label">Phone Number</span>
+        <button
+          class="tertiary-btn" *ngIf="!(phone.valid && phone.enabled && (+(phone?.value ?? 0) !== +(userDetails?.phone ?? 0)))"
+          (click)="userDetails.phone ? phone.enable() : openModal(template)"
+        >
+          {{ userDetails.phone ? 'Edit' : 'Add' }}
+        </button>
+      </div>
+      <div class="d-flex flex-row gap-3">
+        <input type="number" [formControl]="phone" />
+        <button
+          class="tertiary-btn m-0" *ngIf="phone.valid && phone.enabled && (+(phone?.value ?? 0) !== +(userDetails?.phone ?? 0))"
+          (click)="openModal(template)"
+        >
+          Save
+        </button>
+      </div>
+      <p
+        class="error-txt"
+        *ngIf="phone.hasError('min') || phone.hasError('max')"
+      >
+        Phone number is not valid.
+      </p>
+    </div>
+  </div>
+  <div class="address-setup section p-3 d-flex flex-row gap-2"><i class="fa fa-address-book-o mt-1" aria-hidden="true"></i> <span>Address Setup</span></div>
+  <div class="address-setup section  p-3">Orders History</div>
+</div>
+
+<ng-template #template>
+  <div class="p-4 d-flex flex-column gap-3">
+    <div class="">
+      <h5 class="modal-title pull-left">Enter OTP</h5>
+      <button
+        type="button"
+        class="btn-close close pull-right"
+        aria-label="Close"
+        (click)="modalRef?.hide()"
+      >
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <ng-otp-input
+      (onInputChange)="onOtpChange($event)"
+      [config]="{ length: 4, allowNumbersOnly: true }"
+      class="d-flex flex-row justify-content-center"
+    ></ng-otp-input>
+  </div>
+</ng-template>

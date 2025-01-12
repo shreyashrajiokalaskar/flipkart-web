@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUserData } from 'libs/shared/src/lib/interfaces/common-interfaces';
 import { LoginService } from './login.service';
+import { STORAGE_KEYS } from 'libs/shared/src/lib/constants/common.constants';
 
 @Component({
   selector: 'flipkart-login',
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
   createUser(backToLogin?: boolean) {
@@ -81,7 +82,7 @@ export class LoginComponent implements OnInit {
           const { firstName, lastName } = response.data;
           this.user.firstName = firstName;
           this.user.lastName = lastName;
-          sessionStorage.setItem('userInfo', JSON.stringify(response.data));
+          localStorage.setItem(STORAGE_KEYS.USER_INFO, JSON.stringify(response.data));
           this.toastrService.success('Logged in successfully!', 'Success');
           this._router.navigate(['/home']);
         },

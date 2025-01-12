@@ -12,7 +12,7 @@ import { HttpInterceptorService } from 'libs/shared/src/lib/http-interceptors/ht
 import { SocketService } from 'libs/shared/src/lib/services/socket-io.service';
 import { ToastrModule } from 'ngx-toastr';
 import { ToastrComponent } from 'libs/ui-components/src/lib/toastr/toastr.component';
-
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -34,6 +34,8 @@ import { ToastrComponent } from 'libs/ui-components/src/lib/toastr/toastr.compon
       extendedTimeOut: 1000,
       // enableHtml: true,
     }),
+    ModalModule,
+    // NgOtpInputModule
   ],
   providers: [
     {
@@ -42,6 +44,7 @@ import { ToastrComponent } from 'libs/ui-components/src/lib/toastr/toastr.compon
       multi: true,
     },
     SocketService,
+    BsModalService,
   ],
   bootstrap: [AppComponent],
 })

@@ -3,6 +3,8 @@ export interface IUserData {
   password: string;
   firstName: string;
   lastName: string;
+  phone?:number;
+  id?:string;
 }
 
 export interface IProduct {

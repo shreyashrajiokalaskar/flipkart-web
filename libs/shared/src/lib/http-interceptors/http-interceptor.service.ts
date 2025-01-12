@@ -8,6 +8,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { STORAGE_KEYS } from '../constants/common.constants';
 
 @Injectable({ providedIn: 'root' })
 export class HttpInterceptorService implements HttpInterceptor {
@@ -46,6 +47,6 @@ export class HttpInterceptorService implements HttpInterceptor {
   }
 
   getToken() {
-    return JSON.parse(sessionStorage.getItem('userInfo') as string)?.token;
+    return JSON.parse(localStorage.getItem(STORAGE_KEYS.USER_INFO) as string)?.token;
   }
 }

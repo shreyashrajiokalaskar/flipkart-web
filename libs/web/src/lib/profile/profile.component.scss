@@ -1,0 +1,74 @@
+.profile-container {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    grid-template-rows: 74px 74px;
+    gap: 16px;
+
+    .profile-home {
+        padding: 12px;
+
+        .user-full-name {
+            .hello-txt {
+                font-size: 12px;
+            }
+
+            .name {
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .basic-details {
+        padding: 24px 32px;
+        grid-row: span 3;
+
+        span {
+            font-size: 18px;
+            font-weight: 500;
+            padding-right: 24px;
+        }
+
+        .input-fields {
+
+            .input-label {
+                font-size: 18px;
+                font-weight: 500;
+                color: #212121;
+            }
+
+            input {
+                padding: 16px;
+                font-size: 14px;
+                border: 1px solid #e0e0e0;
+                outline: none;
+                border-radius: 2px;
+                height: 50px;
+                width: fit-content;
+                border-radius: 8px;
+            }
+
+            input:disabled {
+                color: #878787;
+            }   
+
+            .ng-invalid {
+                color: #be2222;
+                border: 1px solid #be2222;
+            }
+        }
+
+        .font-14 {
+            font-size: 12px;
+            font-weight: 400;
+            color: #212121
+        }
+    }
+
+    .section {
+        background-color: #fff;
+        border-radius: 2px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
+
+    }
+}

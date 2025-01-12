@@ -10,10 +10,10 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.hideSidenav = this.router.url.includes("product/");
+    this.hideSidenav = this.router.url.includes("product/") || this.router.url.includes("profile");
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.hideSidenav = this.router.url.includes("product/");
+        this.hideSidenav = this.router.url.includes("product/") || this.router.url.includes("profile");
       }
     });
   }

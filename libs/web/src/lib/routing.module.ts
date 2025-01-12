@@ -7,6 +7,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductInfoPageComponent } from './product-info-page';
 import { ToastrComponent } from 'libs/ui-components/src/lib/toastr/toastr.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -27,6 +28,16 @@ const routes: Routes = [
       {
         path: 'category/:id',
         component: ProductListComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        children: [
+          {
+            path: '',
+            
+          }
+        ]
       },
       {
         path: '',

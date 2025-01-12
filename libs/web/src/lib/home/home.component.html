@@ -1,6 +1,6 @@
 <flipkart-header></flipkart-header>
 <flipkart-nav-bar></flipkart-nav-bar>
-<div class="main-body">
+<div class="main-body" [ngClass]="{'d-flex': !hideSidenav }">
   <app-filter-menu *ngIf="!hideSidenav" class="side-nav"></app-filter-menu>
   <router-outlet></router-outlet>
 </div>

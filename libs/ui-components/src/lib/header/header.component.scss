@@ -6,6 +6,7 @@
   position: relative;
   z-index: 2;
 }
+
 .menu-container {
   display: flex;
   width: 70vw;
@@ -13,6 +14,7 @@
   color: white;
   justify-content: space-between;
 }
+
 .flipkart-branding {
   display: flex;
   flex-direction: column;
@@ -40,6 +42,7 @@
   background-color: white;
   margin-right: 0.75rem;
 }
+
 .search-box {
   flex: 3;
   width: 32vw;
@@ -106,4 +109,18 @@
 .logout-icon {
   width: 0.875rem;
   color: var(--white);
+}
+
+
+.dropdown-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+
+  i {
+    font-size: 16px;
+  }
 }

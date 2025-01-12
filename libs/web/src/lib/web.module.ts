@@ -6,6 +6,9 @@ import { HomeComponent } from "./home/home.component";
 import { ProductInfoModule } from "./product-info-page/product-info.module";
 import { ProductListModule } from "./product-list/product-list.module";
 import { UIComponentsModule } from "libs/ui-components/src/lib/ui-components.module";
+import { ProfileComponent } from "./profile/profile.component";
+import { NgOtpInputModule } from "ng-otp-input";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -15,8 +18,10 @@ import { UIComponentsModule } from "libs/ui-components/src/lib/ui-components.mod
     RouterModule,
     ProductInfoModule,
     ProductListModule,
+    NgOtpInputModule,
+    ReactiveFormsModule
   ],
-  declarations: [HomeComponent],
-  exports: [HomeComponent],
+  declarations: [HomeComponent, ProfileComponent],
+  exports: [HomeComponent, ProfileComponent],
 })
 export class WebComponentsModule {}

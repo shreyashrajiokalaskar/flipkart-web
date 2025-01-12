@@ -12,5 +12,43 @@
 body {
     font-family: "Inter", serif;
     font-optical-sizing: auto;
-    font-style: normal;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+  .tertiary-btn {
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 14px;
+    color: #2874f0;
+    margin-left: auto;
+    border: none;
+    background-color: white;
+  }
+
+  .error-txt {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    color: #be2222;
+  }

@@ -1,11 +1,9 @@
 .profile-container {
-    display: grid;
-    grid-template-columns: 2fr 5fr;
-    grid-template-rows: 74px 74px;
     gap: 16px;
 
     .profile-home {
         padding: 12px;
+        height: fit-content;
 
         .user-full-name {
             .hello-txt {
@@ -69,6 +67,11 @@
         background-color: #fff;
         border-radius: 2px;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
-
+        color: #878787;
+        cursor: pointer;
+    }
+    
+    .section-active{
+        color: #212121;
     }
 }

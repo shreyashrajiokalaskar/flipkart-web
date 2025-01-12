@@ -8,6 +8,8 @@ import { ProductInfoPageComponent } from './product-info-page';
 import { ToastrComponent } from 'libs/ui-components/src/lib/toastr/toastr.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ProfileComponent } from './profile/profile.component';
+import { UserProfileComponent } from './profile/user-profile/user-profile.component';
+import { AddressesComponent } from './profile/addresses/addresses.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -34,8 +36,12 @@ const routes: Routes = [
         component: ProfileComponent,
         children: [
           {
-            path: '',
-            
+            path: 'user',
+            component: UserProfileComponent
+          },
+          {
+            path: 'addresses',
+            component: AddressesComponent
           }
         ]
       },

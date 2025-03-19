@@ -1,14 +1,15 @@
-import { RouterModule } from "@angular/router";
-import { LoginModule } from "./login/login.module";
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { HomeComponent } from "./home/home.component";
-import { ProductInfoModule } from "./product-info-page/product-info.module";
-import { ProductListModule } from "./product-list/product-list.module";
-import { UIComponentsModule } from "libs/ui-components/src/lib/ui-components.module";
-import { NgOtpInputModule } from "ng-otp-input";
-import { ReactiveFormsModule } from "@angular/forms";
-import { ProfileModule } from "./profile/profile.module";
+import { RouterModule } from '@angular/router';
+import { LoginModule } from './login/login.module';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HomeComponent } from './home/home.component';
+import { ProductInfoModule } from './product-info-page/product-info.module';
+import { ProductListModule } from './product-list/product-list.module';
+import { UIComponentsModule } from 'libs/ui-components/src/lib/ui-components.module';
+import { NgOtpInputModule } from 'ng-otp-input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileModule } from './profile/profile.module';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   imports: [
@@ -19,9 +20,9 @@ import { ProfileModule } from "./profile/profile.module";
     ProductInfoModule,
     ProductListModule,
     ReactiveFormsModule,
-    ProfileModule
+    ProfileModule,
   ],
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, ResetPasswordComponent],
   exports: [HomeComponent],
 })
 export class WebComponentsModule {}

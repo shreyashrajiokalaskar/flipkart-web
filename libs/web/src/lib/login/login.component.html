@@ -83,7 +83,7 @@
                 *ngIf="!loginForm.controls['password'].value"
                 >Please enter valid email.</span
               >
-              <span class="input-group-text">Forgot?</span>
+              <span class="input-group-text" [routerLink]="['/forgot-password']" >Forgot?</span>
             </div>
           </div>
         </form>

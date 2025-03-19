@@ -10,12 +10,23 @@ import { ToastrModule } from 'ngx-toastr';
 import { ProfileComponent } from './profile/profile.component';
 import { UserProfileComponent } from './profile/user-profile/user-profile.component';
 import { AddressesComponent } from './profile/addresses/addresses.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'login',
     component: LoginComponent,
+    // canActivate: [LoginAuthGuard],
+  },
+  {
+    path: 'reset-password/:token',
+    component: ResetPasswordComponent,
+    // canActivate: [LoginAuthGuard],
+  },
+  {
+    path: 'forgot-password',
+    component: ResetPasswordComponent,
     // canActivate: [LoginAuthGuard],
   },
   {
@@ -37,13 +48,13 @@ const routes: Routes = [
         children: [
           {
             path: 'user',
-            component: UserProfileComponent
+            component: UserProfileComponent,
           },
           {
             path: 'addresses',
-            component: AddressesComponent
-          }
-        ]
+            component: AddressesComponent,
+          },
+        ],
       },
       {
         path: '',
